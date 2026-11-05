@@ -1,0 +1,1812 @@
+{
+  "library": [
+    {
+      "id": "matching",
+      "name": "Matching",
+      "description": "Match the suit or rank of the discard. Jacks and jokers are wild. The bottom card validates a combo; the next player matches its top card.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {}
+    },
+    {
+      "id": "mao",
+      "name": "Winning & Mao",
+      "description": "Discard your last card or be the last standing. Declare Mao at one card. Anyone else can call a missed declaration within 3 seconds for +2 cards.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "penalty": 2,
+        "window": 3000
+      }
+    },
+    {
+      "id": "lives",
+      "name": "Lives",
+      "description": "Everyone starts with one life. Life loss consumes counters before lives.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "starting": 1
+      }
+    },
+    {
+      "id": "cap",
+      "name": "Card cap",
+      "description": "Exceeding 20 cards (26 with two decks) is instant death. Spare lives: lose one life and discard down to the cap. Quads of nines are immune. The source also says 25 for two decks; this implementation follows §7.7.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "limit54": 20,
+        "limit108": 26
+      }
+    },
+    {
+      "id": "timer",
+      "name": "Turn timer",
+      "description": "After 30 seconds, automatically draw and pass.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "seconds": 30
+      }
+    },
+    {
+      "id": "trade",
+      "name": "Blind trading",
+      "description": "One card, once per rotation. Both sides commit face down before the exchange.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {}
+    },
+    {
+      "id": "corpse",
+      "name": "Corpse looting",
+      "description": "An eliminated player’s cards become a separate temporary draw pile.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {}
+    },
+    {
+      "id": "stack",
+      "name": "Stacking",
+      "description": "Draw cards may be stacked on draw cards; fours pass accumulated death to the next player.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {}
+    },
+    {
+      "id": "shape-pair",
+      "name": "Pairs",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "shape": "pair"
+      }
+    },
+    {
+      "id": "shape-trips",
+      "name": "Three of a kind",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "shape": "trips"
+      }
+    },
+    {
+      "id": "shape-quads",
+      "name": "Four of a kind",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "shape": "quads"
+      }
+    },
+    {
+      "id": "shape-twoPair",
+      "name": "Two pair",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "shape": "twoPair"
+      }
+    },
+    {
+      "id": "shape-straight",
+      "name": "Straights",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "shape": "straight"
+      }
+    },
+    {
+      "id": "shape-flush",
+      "name": "Flushes",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "shape": "flush"
+      }
+    },
+    {
+      "id": "shape-straightFlush",
+      "name": "Straight flush",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "shape": "straightFlush"
+      }
+    },
+    {
+      "id": "shape-fullHouse",
+      "name": "Full house · WIP",
+      "description": "Poker hand shape. Bottom card must match the current discard. Never more than four of the same rank.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "shape": "fullHouse"
+      }
+    },
+    {
+      "id": "phrases",
+      "name": "Chat phrases",
+      "description": "Case-insensitive phrases must arrive within 5 seconds; missing each costs +2 cards. Sevens: have a nice day; pair sevens: Have a really nice day; kings: All hail Chairman Mao, repeated by combo size (quads once).",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "penalty": 2,
+        "window": 5000
+      }
+    },
+    {
+      "id": "spades",
+      "name": "Spades",
+      "description": "Type “spades” for each spade played, within 5 seconds. Missing it costs +2.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "penalty": 2,
+        "window": 5000
+      }
+    },
+    {
+      "id": "point",
+      "name": "Point of order",
+      "description": "Any player can ask the Chairman a rules question at a cost of two cards.",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "penalty": 2
+      }
+    },
+    {
+      "id": "slavery",
+      "name": "Slavery",
+      "description": "A suited A-2-3-4-5 assigns the lowest-card holder as slave (spades, hearts, clubs, diamonds tiebreak). Reassigns outside the City; accumulates inside. Quads of kings or civil war free slaves.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {}
+    },
+    {
+      "id": "reveal",
+      "name": "Hand reveal",
+      "description": "One player placing A, 3, 5, K consecutively reveals all hands for four rotations.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "rotations": 4
+      }
+    },
+    {
+      "id": "city",
+      "name": "Forbidden City",
+      "description": "Royal house (QQKKK) makes an emperor with a separate discard. Blocks negative effects except level 2+ poison; falls to poison or communist Mao.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {}
+    },
+    {
+      "id": "civil",
+      "name": "Civil war · WIP",
+      "description": "Off by default. Consecutive pairs of kings begin faction war. Four unresolved contradictions are not assigned invented rulings. This feature is not fully implemented.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "royal",
+      "name": "Rule 17 · Royal flush",
+      "description": "A royal flush removes all but one six from hands, draw and discard. The final six is hidden in the deck. Playing it grants announced developer access for one rotation and removes it. No pair/trips/quads of six can then exist.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {}
+    },
+    {
+      "id": "card-1-A",
+      "name": "Single A",
+      "description": "+1 card to next",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "A",
+          "count": 1
+        },
+        "effect": {
+          "draw": 1
+        }
+      }
+    },
+    {
+      "id": "card-1-2",
+      "name": "Single 2",
+      "description": "Reverse direction",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "2",
+          "count": 1
+        },
+        "effect": {
+          "reverse": true
+        }
+      }
+    },
+    {
+      "id": "card-1-3",
+      "name": "Single 3",
+      "description": "Gain one life and one counter",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "3",
+          "count": 1
+        },
+        "effect": {
+          "lives": 1,
+          "counter": 1
+        }
+      }
+    },
+    {
+      "id": "card-1-4",
+      "name": "Single 4",
+      "description": "Next loses one life",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "4",
+          "count": 1
+        },
+        "effect": {
+          "damage": 1,
+          "annihilate": false
+        }
+      }
+    },
+    {
+      "id": "card-1-5",
+      "name": "Single 5",
+      "description": "Poison 1; dies in 5 rotations",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "5",
+          "count": 1
+        },
+        "effect": {
+          "poison": 1,
+          "rotations": 5
+        }
+      }
+    },
+    {
+      "id": "card-1-6",
+      "name": "Single 6",
+      "description": "No effect until Rule 17",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "6",
+          "count": 1
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-1-7",
+      "name": "Single 7",
+      "description": "Say have a nice day; next draws 1",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "7",
+          "count": 1
+        },
+        "effect": {
+          "draw": 1
+        }
+      }
+    },
+    {
+      "id": "card-1-8",
+      "name": "Single 8",
+      "description": "No effect",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "8",
+          "count": 1
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-1-9",
+      "name": "Single 9",
+      "description": "No effect",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "9",
+          "count": 1
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-1-10",
+      "name": "Single 10",
+      "description": "No effect",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "10",
+          "count": 1
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-1-J",
+      "name": "Single J",
+      "description": "Wild; declare suit",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "J",
+          "count": 1
+        },
+        "effect": {
+          "wild": true
+        }
+      }
+    },
+    {
+      "id": "card-1-Q",
+      "name": "Single Q",
+      "description": "Next draws 3",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "Q",
+          "count": 1
+        },
+        "effect": {
+          "draw": 3
+        }
+      }
+    },
+    {
+      "id": "card-1-K",
+      "name": "Single K",
+      "description": "All hail Chairman Mao",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "K",
+          "count": 1
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-1-Jo",
+      "name": "Single Jo",
+      "description": "Shield counter",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "Jo",
+          "count": 1
+        },
+        "effect": {
+          "counter": 1
+        }
+      }
+    },
+    {
+      "id": "card-2-A",
+      "name": "Pair A",
+      "description": "Next +4, you +2, previous discards 3",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "A",
+          "count": 2
+        },
+        "effect": {
+          "draw": 4
+        }
+      }
+    },
+    {
+      "id": "card-2-2",
+      "name": "Pair 2",
+      "description": "Rotate hands left",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "2",
+          "count": 2
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-2-3",
+      "name": "Pair 3",
+      "description": "Gain 2 lives and 2 counters",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "3",
+          "count": 2
+        },
+        "effect": {
+          "lives": 2,
+          "counter": 2
+        }
+      }
+    },
+    {
+      "id": "card-2-4",
+      "name": "Pair 4",
+      "description": "Next loses 2 lives",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "4",
+          "count": 2
+        },
+        "effect": {
+          "damage": 2,
+          "annihilate": false
+        }
+      }
+    },
+    {
+      "id": "card-2-5",
+      "name": "Pair 5",
+      "description": "Poison 2; dies in 4 rotations",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "5",
+          "count": 2
+        },
+        "effect": {
+          "poison": 2,
+          "rotations": 4
+        }
+      }
+    },
+    {
+      "id": "card-2-6",
+      "name": "Pair 6",
+      "description": "Everyone draws once each rotation for 5 rotations",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "6",
+          "count": 2
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-2-7",
+      "name": "Pair 7",
+      "description": "Have a really nice day; next +2",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "7",
+          "count": 2
+        },
+        "effect": {
+          "draw": 2
+        }
+      }
+    },
+    {
+      "id": "card-2-8",
+      "name": "Pair 8",
+      "description": "Rig next 7 cards",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "8",
+          "count": 2
+        },
+        "effect": {
+          "rig": 7
+        }
+      }
+    },
+    {
+      "id": "card-2-9",
+      "name": "Pair 9",
+      "description": "No effect",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "9",
+          "count": 2
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-2-10",
+      "name": "Pair 10",
+      "description": "No effect",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "10",
+          "count": 2
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-2-J",
+      "name": "Pair J",
+      "description": "Wild; declare suit",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "J",
+          "count": 2
+        },
+        "effect": {
+          "wild": true
+        }
+      }
+    },
+    {
+      "id": "card-2-Q",
+      "name": "Pair Q",
+      "description": "Next +6",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "Q",
+          "count": 2
+        },
+        "effect": {
+          "draw": 6
+        }
+      }
+    },
+    {
+      "id": "card-2-K",
+      "name": "Pair K",
+      "description": "Hail twice",
+      "tags": [
+        "base"
+      ],
+      "tier": 0,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "K",
+          "count": 2
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-3-A",
+      "name": "Trips A",
+      "description": "Next +3",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "A",
+          "count": 3
+        },
+        "effect": {
+          "draw": 3
+        }
+      }
+    },
+    {
+      "id": "card-3-2",
+      "name": "Trips 2",
+      "description": "Rotate hands right",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "2",
+          "count": 3
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-3-3",
+      "name": "Trips 3",
+      "description": "Gain 6 lives",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "3",
+          "count": 3
+        },
+        "effect": {
+          "lives": 6,
+          "counter": 1
+        }
+      }
+    },
+    {
+      "id": "card-3-4",
+      "name": "Trips 4",
+      "description": "Steal one life; one-rotation heart trap",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "4",
+          "count": 3
+        },
+        "effect": {
+          "damage": 3,
+          "annihilate": false
+        }
+      }
+    },
+    {
+      "id": "card-3-5",
+      "name": "Trips 5",
+      "description": "Poison 3; dies in 3 rotations",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "5",
+          "count": 3
+        },
+        "effect": {
+          "poison": 3,
+          "rotations": 3
+        }
+      }
+    },
+    {
+      "id": "card-3-6",
+      "name": "Trips 6",
+      "description": "No effect (for now)",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "6",
+          "count": 3
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-3-7",
+      "name": "Trips 7",
+      "description": "Next cannot win for 5 rotations; reveals last card",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "7",
+          "count": 3
+        },
+        "effect": {
+          "blockWin": 5
+        }
+      }
+    },
+    {
+      "id": "card-3-8",
+      "name": "Trips 8",
+      "description": "Rig top 10",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "8",
+          "count": 3
+        },
+        "effect": {
+          "rig": 10
+        }
+      }
+    },
+    {
+      "id": "card-3-9",
+      "name": "Trips 9",
+      "description": "Shield for 5 rotations",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "9",
+          "count": 3
+        },
+        "effect": {
+          "shield": 5
+        }
+      }
+    },
+    {
+      "id": "card-3-10",
+      "name": "Trips 10",
+      "description": "No effect",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "10",
+          "count": 3
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-3-J",
+      "name": "Trips J",
+      "description": "Dictate suit for 3 rotations",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "J",
+          "count": 3
+        },
+        "effect": {
+          "wild": true
+        }
+      }
+    },
+    {
+      "id": "card-3-Q",
+      "name": "Trips Q",
+      "description": "Next +9",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "Q",
+          "count": 3
+        },
+        "effect": {
+          "draw": 9
+        }
+      }
+    },
+    {
+      "id": "card-3-K",
+      "name": "Trips K",
+      "description": "Hail three times",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "K",
+          "count": 3
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-4-A",
+      "name": "Quads A",
+      "description": "Next +4",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "A",
+          "count": 4
+        },
+        "effect": {
+          "draw": 4
+        }
+      }
+    },
+    {
+      "id": "card-4-2",
+      "name": "Quads 2",
+      "description": "No effect (for now)",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "2",
+          "count": 4
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-4-3",
+      "name": "Quads 3",
+      "description": "Reflect death; stops annihilation",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "3",
+          "count": 4
+        },
+        "effect": {
+          "lives": 0,
+          "counter": 1
+        }
+      }
+    },
+    {
+      "id": "card-4-4",
+      "name": "Quads 4",
+      "description": "Annihilate a chosen player",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "4",
+          "count": 4
+        },
+        "effect": {
+          "damage": 0,
+          "annihilate": true
+        }
+      }
+    },
+    {
+      "id": "card-4-5",
+      "name": "Quads 5",
+      "description": "Poison 4; dies in 2 rotations",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "5",
+          "count": 4
+        },
+        "effect": {
+          "poison": 4,
+          "rotations": 2
+        }
+      }
+    },
+    {
+      "id": "card-4-6",
+      "name": "Quads 6",
+      "description": "Return all hands; shuffle and redeal 6 each",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "6",
+          "count": 4
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-4-7",
+      "name": "Quads 7",
+      "description": "No effect (for now)",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "7",
+          "count": 4
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-4-8",
+      "name": "Quads 8",
+      "description": "Rebuild and rig deck",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "8",
+          "count": 4
+        },
+        "effect": {
+          "rig": 999
+        }
+      }
+    },
+    {
+      "id": "card-4-9",
+      "name": "Quads 9",
+      "description": "Longevity: cannot die or win normally while holding all nines",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "9",
+          "count": 4
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-4-10",
+      "name": "Quads 10",
+      "description": "No effect",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "10",
+          "count": 4
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "card-4-J",
+      "name": "Quads J",
+      "description": "Dictate suit for 5 rotations",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "J",
+          "count": 4
+        },
+        "effect": {
+          "wild": true
+        }
+      }
+    },
+    {
+      "id": "card-4-Q",
+      "name": "Quads Q",
+      "description": "Next +12",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "Q",
+          "count": 4
+        },
+        "effect": {
+          "draw": 12
+        }
+      }
+    },
+    {
+      "id": "card-4-K",
+      "name": "Quads K",
+      "description": "Share cards equally, remove kings, free slaves, dissolve City",
+      "tags": [
+        "extra"
+      ],
+      "tier": 1,
+      "defaultConfig": {
+        "trigger": {
+          "rank": "K",
+          "count": 4
+        },
+        "effect": {}
+      }
+    },
+    {
+      "id": "house-A",
+      "name": "Full house · A",
+      "description": "You draw 3, cannot counter or stack · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "A"
+      }
+    },
+    {
+      "id": "house-2",
+      "name": "Full house · 2",
+      "description": "Skip and reverse · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "2"
+      }
+    },
+    {
+      "id": "house-3",
+      "name": "Full house · 3",
+      "description": "Threes disabled for 2 rotations · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "3"
+      }
+    },
+    {
+      "id": "house-4",
+      "name": "Full house · 4",
+      "description": "Fours disabled 1 rotation; next takes one death · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "4"
+      }
+    },
+    {
+      "id": "house-5",
+      "name": "Full house · 5",
+      "description": "Fives disabled 1 rotation; next takes poison 2 for 3 rotations · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "5"
+      }
+    },
+    {
+      "id": "house-6",
+      "name": "Full house · 6",
+      "description": "Next 3 draws add a card and skip · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "6"
+      }
+    },
+    {
+      "id": "house-7",
+      "name": "Full house · 7",
+      "description": "Next 3 sevens repeat · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "7"
+      }
+    },
+    {
+      "id": "house-8",
+      "name": "Full house · 8",
+      "description": "Next placement may be challenged by same rank in different suit · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "8"
+      }
+    },
+    {
+      "id": "house-9",
+      "name": "Full house · 9",
+      "description": "Cannot win normally for 3 rotations · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "9"
+      }
+    },
+    {
+      "id": "house-10",
+      "name": "Full house · 10",
+      "description": "Reveal 2 locked cards until both played · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "10"
+      }
+    },
+    {
+      "id": "house-J",
+      "name": "Full house · J",
+      "description": "Must draw unless same rank · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "J"
+      }
+    },
+    {
+      "id": "house-Q",
+      "name": "Full house · Q",
+      "description": "Trading threshold 10 for 3 rotations · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "Q"
+      }
+    },
+    {
+      "id": "house-K",
+      "name": "Full house · K",
+      "description": "No face cards 3 rotations; Glory to Chairman Mao on draws · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "K"
+      }
+    },
+    {
+      "id": "house-Jo",
+      "name": "Full house · Jo",
+      "description": "Initiated actions disabled 2 rotations · WIP: incomplete enforcement.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {
+        "trips": "Jo"
+      }
+    },
+    {
+      "id": "99JJ",
+      "name": "99JJ special",
+      "description": "Exactly two nines and two jacks: everyone gives two cards to a chosen person; cannot win by this discard.",
+      "tags": [
+        "extra"
+      ],
+      "tier": 2,
+      "defaultConfig": {}
+    }
+  ],
+  "buckets": {
+    "easy:54": {
+      "ruleIds": [
+        "matching",
+        "mao",
+        "lives",
+        "cap",
+        "timer",
+        "trade",
+        "corpse",
+        "stack",
+        "shape-pair",
+        "point",
+        "card-1-A",
+        "card-1-2",
+        "card-1-3",
+        "card-1-4",
+        "card-1-5",
+        "card-1-6",
+        "card-1-7",
+        "card-1-8",
+        "card-1-9",
+        "card-1-10",
+        "card-1-J",
+        "card-1-Q",
+        "card-1-K",
+        "card-1-Jo",
+        "card-2-A",
+        "card-2-2",
+        "card-2-3",
+        "card-2-4",
+        "card-2-5",
+        "card-2-6",
+        "card-2-7",
+        "card-2-8",
+        "card-2-9",
+        "card-2-10",
+        "card-2-J",
+        "card-2-Q",
+        "card-2-K"
+      ],
+      "overrides": {}
+    },
+    "medium:54": {
+      "ruleIds": [
+        "matching",
+        "mao",
+        "lives",
+        "cap",
+        "timer",
+        "trade",
+        "corpse",
+        "stack",
+        "shape-pair",
+        "shape-trips",
+        "shape-quads",
+        "shape-twoPair",
+        "phrases",
+        "spades",
+        "point",
+        "card-1-A",
+        "card-1-2",
+        "card-1-3",
+        "card-1-4",
+        "card-1-5",
+        "card-1-6",
+        "card-1-7",
+        "card-1-8",
+        "card-1-9",
+        "card-1-10",
+        "card-1-J",
+        "card-1-Q",
+        "card-1-K",
+        "card-1-Jo",
+        "card-2-A",
+        "card-2-2",
+        "card-2-3",
+        "card-2-4",
+        "card-2-5",
+        "card-2-6",
+        "card-2-7",
+        "card-2-8",
+        "card-2-9",
+        "card-2-10",
+        "card-2-J",
+        "card-2-Q",
+        "card-2-K",
+        "card-3-A",
+        "card-3-2",
+        "card-3-3",
+        "card-3-4",
+        "card-3-5",
+        "card-3-6",
+        "card-3-7",
+        "card-3-8",
+        "card-3-9",
+        "card-3-10",
+        "card-3-J",
+        "card-3-Q",
+        "card-3-K",
+        "card-4-A",
+        "card-4-2",
+        "card-4-3",
+        "card-4-4",
+        "card-4-5",
+        "card-4-6",
+        "card-4-7",
+        "card-4-8",
+        "card-4-9",
+        "card-4-10",
+        "card-4-J",
+        "card-4-Q",
+        "card-4-K"
+      ],
+      "overrides": {}
+    },
+    "difficult:54": {
+      "ruleIds": [
+        "matching",
+        "mao",
+        "lives",
+        "cap",
+        "timer",
+        "trade",
+        "corpse",
+        "stack",
+        "shape-pair",
+        "shape-trips",
+        "shape-quads",
+        "shape-twoPair",
+        "shape-straight",
+        "shape-flush",
+        "shape-straightFlush",
+        "shape-fullHouse",
+        "phrases",
+        "spades",
+        "point",
+        "slavery",
+        "reveal",
+        "city",
+        "civil",
+        "royal",
+        "card-1-A",
+        "card-1-2",
+        "card-1-3",
+        "card-1-4",
+        "card-1-5",
+        "card-1-6",
+        "card-1-7",
+        "card-1-8",
+        "card-1-9",
+        "card-1-10",
+        "card-1-J",
+        "card-1-Q",
+        "card-1-K",
+        "card-1-Jo",
+        "card-2-A",
+        "card-2-2",
+        "card-2-3",
+        "card-2-4",
+        "card-2-5",
+        "card-2-6",
+        "card-2-7",
+        "card-2-8",
+        "card-2-9",
+        "card-2-10",
+        "card-2-J",
+        "card-2-Q",
+        "card-2-K",
+        "card-3-A",
+        "card-3-2",
+        "card-3-3",
+        "card-3-4",
+        "card-3-5",
+        "card-3-6",
+        "card-3-7",
+        "card-3-8",
+        "card-3-9",
+        "card-3-10",
+        "card-3-J",
+        "card-3-Q",
+        "card-3-K",
+        "card-4-A",
+        "card-4-2",
+        "card-4-3",
+        "card-4-4",
+        "card-4-5",
+        "card-4-6",
+        "card-4-7",
+        "card-4-8",
+        "card-4-9",
+        "card-4-10",
+        "card-4-J",
+        "card-4-Q",
+        "card-4-K",
+        "house-A",
+        "house-2",
+        "house-3",
+        "house-4",
+        "house-5",
+        "house-6",
+        "house-7",
+        "house-8",
+        "house-9",
+        "house-10",
+        "house-J",
+        "house-Q",
+        "house-K",
+        "house-Jo",
+        "99JJ"
+      ],
+      "overrides": {}
+    },
+    "easy:108": {
+      "ruleIds": [
+        "matching",
+        "mao",
+        "lives",
+        "cap",
+        "timer",
+        "trade",
+        "corpse",
+        "stack",
+        "shape-pair",
+        "point",
+        "card-1-A",
+        "card-1-2",
+        "card-1-3",
+        "card-1-4",
+        "card-1-5",
+        "card-1-6",
+        "card-1-7",
+        "card-1-8",
+        "card-1-9",
+        "card-1-10",
+        "card-1-J",
+        "card-1-Q",
+        "card-1-K",
+        "card-1-Jo",
+        "card-2-A",
+        "card-2-2",
+        "card-2-3",
+        "card-2-4",
+        "card-2-5",
+        "card-2-6",
+        "card-2-7",
+        "card-2-8",
+        "card-2-9",
+        "card-2-10",
+        "card-2-J",
+        "card-2-Q",
+        "card-2-K"
+      ],
+      "overrides": {}
+    },
+    "medium:108": {
+      "ruleIds": [
+        "matching",
+        "mao",
+        "lives",
+        "cap",
+        "timer",
+        "trade",
+        "corpse",
+        "stack",
+        "shape-pair",
+        "shape-trips",
+        "shape-quads",
+        "shape-twoPair",
+        "phrases",
+        "spades",
+        "point",
+        "card-1-A",
+        "card-1-2",
+        "card-1-3",
+        "card-1-4",
+        "card-1-5",
+        "card-1-6",
+        "card-1-7",
+        "card-1-8",
+        "card-1-9",
+        "card-1-10",
+        "card-1-J",
+        "card-1-Q",
+        "card-1-K",
+        "card-1-Jo",
+        "card-2-A",
+        "card-2-2",
+        "card-2-3",
+        "card-2-4",
+        "card-2-5",
+        "card-2-6",
+        "card-2-7",
+        "card-2-8",
+        "card-2-9",
+        "card-2-10",
+        "card-2-J",
+        "card-2-Q",
+        "card-2-K",
+        "card-3-A",
+        "card-3-2",
+        "card-3-3",
+        "card-3-4",
+        "card-3-5",
+        "card-3-6",
+        "card-3-7",
+        "card-3-8",
+        "card-3-9",
+        "card-3-10",
+        "card-3-J",
+        "card-3-Q",
+        "card-3-K",
+        "card-4-A",
+        "card-4-2",
+        "card-4-3",
+        "card-4-4",
+        "card-4-5",
+        "card-4-6",
+        "card-4-7",
+        "card-4-8",
+        "card-4-9",
+        "card-4-10",
+        "card-4-J",
+        "card-4-Q",
+        "card-4-K"
+      ],
+      "overrides": {}
+    },
+    "difficult:108": {
+      "ruleIds": [
+        "matching",
+        "mao",
+        "lives",
+        "cap",
+        "timer",
+        "trade",
+        "corpse",
+        "stack",
+        "shape-pair",
+        "shape-trips",
+        "shape-quads",
+        "shape-twoPair",
+        "shape-straight",
+        "shape-flush",
+        "shape-straightFlush",
+        "shape-fullHouse",
+        "phrases",
+        "spades",
+        "point",
+        "slavery",
+        "reveal",
+        "city",
+        "civil",
+        "royal",
+        "card-1-A",
+        "card-1-2",
+        "card-1-3",
+        "card-1-4",
+        "card-1-5",
+        "card-1-6",
+        "card-1-7",
+        "card-1-8",
+        "card-1-9",
+        "card-1-10",
+        "card-1-J",
+        "card-1-Q",
+        "card-1-K",
+        "card-1-Jo",
+        "card-2-A",
+        "card-2-2",
+        "card-2-3",
+        "card-2-4",
+        "card-2-5",
+        "card-2-6",
+        "card-2-7",
+        "card-2-8",
+        "card-2-9",
+        "card-2-10",
+        "card-2-J",
+        "card-2-Q",
+        "card-2-K",
+        "card-3-A",
+        "card-3-2",
+        "card-3-3",
+        "card-3-4",
+        "card-3-5",
+        "card-3-6",
+        "card-3-7",
+        "card-3-8",
+        "card-3-9",
+        "card-3-10",
+        "card-3-J",
+        "card-3-Q",
+        "card-3-K",
+        "card-4-A",
+        "card-4-2",
+        "card-4-3",
+        "card-4-4",
+        "card-4-5",
+        "card-4-6",
+        "card-4-7",
+        "card-4-8",
+        "card-4-9",
+        "card-4-10",
+        "card-4-J",
+        "card-4-Q",
+        "card-4-K",
+        "house-A",
+        "house-2",
+        "house-3",
+        "house-4",
+        "house-5",
+        "house-6",
+        "house-7",
+        "house-8",
+        "house-9",
+        "house-10",
+        "house-J",
+        "house-Q",
+        "house-K",
+        "house-Jo",
+        "99JJ"
+      ],
+      "overrides": {}
+    }
+  }
+}
